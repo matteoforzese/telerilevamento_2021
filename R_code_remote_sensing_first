@@ -12,3 +12,45 @@ cl<-colorRampPalette(c("black","grey","light grey"))(100)
 plot(p224r63_2011, col=cl)
 colore<-colorRampPalette(c("blue","green","magenta"))(100)
 plot(p224r63_2011, col=colore)
+#day 3
+#landsat
+#B1:BLU
+#B2:VERDE
+#B3:ROSSO
+#B4:INFRAROSSO VICINO
+#B5:INFRAROSSO MEDIO
+#B6:INFRAROSSO TERMICO
+#B7:INFRAROSSO MEDIO
+#clean current graph
+dev.off()
+#Per legare due blocchi usiamo $, plottiamo una banda
+plot (p224r63_2011$B1_sre)
+#plottare banda 1 con color ramp palette nuova
+plot (p224r63_2011$B1_sre, col=colore)
+dev.off()
+#Nuovo plottaggio con più bande, per mettere sistemare immagini in 1 riga 2 colonne
+par(mfrow=c(1,2))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+#plot first four band of landsat
+par(mfrow=c(4,1))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+#quadrato di bande
+par(mfrow=c(2,2))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+#2x2, con colori che rispecchiano le bande
+par(mfrow=c(2,2))
+clb <- colorRampPalette(c("dark blue","blue","light blue")) (100)
+plot(p224r63_2011$B1_sre, col=clb)
+clg <- colorRampPalette(c("dark green","green","light green")) (100)
+plot(p224r63_2011$B2_sre, col=clg)
+clr <- colorRampPalette(c("dark red","red","pink")) (100)
+plot(p224r63_2011$B3_sre, col=clr)
+clnir <- colorRampPalette(c("red","orange","yellow")) (100)
+plot(p224r63_2011$B4_sre, col=clnir)
