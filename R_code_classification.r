@@ -1,4 +1,4 @@
-setwd("~/lab")
+setwd("C:/lab/")
 library(raster)
 library(RStoolbox)
 #importo immagine tramite funzione brick
@@ -31,3 +31,21 @@ cl <- colorRampPalette(c('yellow','black','red'))(100)
 par(mfrow=c(1,2))
 plotRGB(sol, 1,2,3, stretch="lin")
 plot(soc$map,col=cl)
+
+
+
+
+
+#GRAN CANYON DATA
+setwd("C:/lab/")
+library(raster)
+library(RStoolbox)
+gc<-brick("dolansprings_oli_2013088_canyon_lrg.jpg")
+plotRGB(gc, 1,2,3, stretch="lin")
+#utilizzo stretch diverso 
+plotRGB(gc, 1,2,3, stretch="hist")
+gcc2 <- unsuperClass(gc, nClasses=2)
+plot(gcc2$map)
+#aumento numero classi
+gcc4 <- unsuperClass(gc, nClasses=4)
+plot(gcc4$map)
