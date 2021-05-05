@@ -1,5 +1,8 @@
 library(raster)
 library(RStoolbox)#per indici di vegetazione
+install.packages("rasterdiv")
+library(rasterdiv)
+library(rasterVis)
 setwd("C:/lab/")
 defor1 <- brick("defor1.png")
 defor2 <- brick("defor2.png")
@@ -36,3 +39,16 @@ vi2<-spectralIndices(defor2, green=3, red=2, nir=1)
 plot(vi2, col=cl)
 difndvi<- ndvi1-ndvi2
 plot(difndvi, col=cld)
+
+#worldwide NDVI
+plot(copNDVI)
+#funzione per cambiare valori in altri valori
+#i pixel coi valori 253, 254, 255 (acqua) saranno settati come "NA"
+copNDVI <- reclassify(copNDVI, cbind(253:255, NA))
+plot(copNDVI)
+#levelplot è media di valori per riga e colonna, utilizzo pacchetto rasterVis
+levelplot(copNDVI)
+
+
+
+
