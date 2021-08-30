@@ -1,19 +1,35 @@
 # primo codice in R per telerilevamento
+
+#Per intstallare i vari pacchetti di R, le virgolette indicano un'azione che necessita di uscire da R
+install.packages("raster")
+
+#Con questa funzione scelgo la Working directory, la cartella lab
 setwd("C:/lab/")
-#utilizzare pacchetto
+
+#utilizzare pacchetto raster su R
 library(raster)
-#importare immagine satellitare
-brick("p224r63_2011_masked.grd")->p224r63_2011
+
+#importare immagine satellitare, rinomino il file tramite la freccetta per semplificare il lavoro
+p224r63_2011<-brick("p224r63_2011_masked.grd")
+
+#Da informazioni sul file
 p224r63_2011
+
+#Permette di visualizzare il file su R, vedo 7 mappe, una per ogni banda del satellite
 plot(p224r63_2011)
-#cambio colore
+
+#cambiare i colori di visualizzazione
 cl<-colorRampPalette(c("black","grey","light grey"))(100)
+
 #plottare con nuovi colori
 plot(p224r63_2011, col=cl)
+
+#altro esempio
 colore<-colorRampPalette(c("blue","green","magenta"))(100)
 plot(p224r63_2011, col=colore)
-#day 3
-#landsat
+
+
+#Tutte le possibili bande
 #B1:BLU
 #B2:VERDE
 #B3:ROSSO
@@ -21,32 +37,37 @@ plot(p224r63_2011, col=colore)
 #B5:INFRAROSSO MEDIO
 #B6:INFRAROSSO TERMICO
 #B7:INFRAROSSO MEDIO
-#clean current graph
+
+#pulire grafica corrente
 dev.off()
+
 #Per legare due blocchi usiamo $, plottiamo una banda
 plot (p224r63_2011$B1_sre)
+
 #plottare banda 1 con color ramp palette nuova
 plot (p224r63_2011$B1_sre, col=colore)
+
 dev.off()
-#Nuovo plottaggio con più bande, per mettere sistemare immagini in 1 riga 2 colonne
+
+#Nuovo plottaggio con più bande, per sistemare immagini in 1 riga 2 colonne
 par(mfrow=c(1,2))
 plot(p224r63_2011$B1_sre)
 plot(p224r63_2011$B2_sre)
-#plot first four band of landsat
-par(mfrow=c(4,1))
-#Visualising data by RGB
-library(raster)
 
+#plottare 4 immagini in quattro righe e una colonna
+par(mfrow=c(4,1))
 plot(p224r63_2011$B1_sre)
 plot(p224r63_2011$B2_sre)
 plot(p224r63_2011$B3_sre)
 plot(p224r63_2011$B4_sre)
-#quadrato di bande
+
+#altro quadrato di bande, stavolta 2x2
 par(mfrow=c(2,2))
 plot(p224r63_2011$B1_sre)
 plot(p224r63_2011$B2_sre)
 plot(p224r63_2011$B3_sre)
 plot(p224r63_2011$B4_sre)
+
 #2x2, con colori che rispecchiano le bande
 par(mfrow=c(2,2))
 clb <- colorRampPalette(c("dark blue","blue","light blue")) (100)
@@ -57,10 +78,10 @@ clr <- colorRampPalette(c("dark red","red","pink")) (100)
 plot(p224r63_2011$B3_sre, col=clr)
 clnir <- colorRampPalette(c("red","orange","yellow")) (100)
 plot(p224r63_2011$B4_sre, col=clnir)
-library(raster)
-setwd("C:/lab/")
+
+
 p224r63_2011 <- brick("p224r63_2011_masked.grd")
-#plottare RGB, stretch lineare
+#plottare immagini con schema RGB, stretch lineare
 plotRGB(p224r63_2011,r=3,g=2,b=1,stretch="Lin")
 #aggiungo infrarossi, tolgo blu
 plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
@@ -68,42 +89,47 @@ plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
 plotRGB(p224r63_2011,r=3,g=4,b=2,stretch="Lin")
 #prova con inversione infrarosso-blu
 plotRGB(p224r63_2011,r=3,g=2,b=4,stretch="Lin")
-#2x2, con vari assetti RGB
+
 #creare PDF
 pdf("primopdfR.pdf")
+
+#2x2, con vari assetti RGB
 par(mfrow=c(2,2))
 plotRGB(p224r63_2011,r=3,g=2,b=1,stretch="Lin")
 plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
 plotRGB(p224r63_2011,r=3,g=4,b=2,stretch="Lin")
 plotRGB(p224r63_2011,r=3,g=2,b=4,stretch="Lin")
+
 dev.off()
+
+#due plot con stretch lineare e istogramma
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
-# par natural colours, flase colours, and false colours with histogram stretching
+
+# par con colori naturali, falsi e falsi con stretch istogramma
 par(mfrow=c(3,1))
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
+
 #installo nuovo pacchetto
 install.packages("RStoolbox")
 library(Rstoolbox)
 
-#brick 1988
-library(raster)
-setwd("C:/lab/")
-p224r63_2011 <- brick("p224r63_2011_masked.grd")
-p224r63_2011
 #Multitemporal set, confronto tra 1988 e 2011
 p224r63_1988 <- brick("p224r63_1988_masked.grd")
 p224r63_1988
 plot(p224r63_1988)
 plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
+
 #confronto 1988-2011
 par(mfrow=c(2,1))
 plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
-#
+
+#Creare nuovo PDF
 pdf("confronto 88-11")
+#Par 2x2 con immagini con stretch lineare e istogramma per confronto
 par(mfrow=c(2,2))
 plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin")
 plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
