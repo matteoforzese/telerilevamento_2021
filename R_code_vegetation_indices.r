@@ -1,7 +1,12 @@
 library(raster)
-library(RStoolbox)#per indici di vegetazione
+
+#per indici di vegetazione
+library(RStoolbox)
+
+#pacchetto che calcola riflessione della luce per capire l'indice di vegetazione di una determinata foto (si può estrapolare il tipo di vegetazione, lo status della vegetazione, etc)
 install.packages("rasterdiv")
-library(rasterdiv)
+library(rasterdiv) 
+
 library(rasterVis)
 setwd("C:/lab/")
 defor1 <- brick("defor1.png")
@@ -9,12 +14,14 @@ defor2 <- brick("defor2.png")
 par(mfrow=c(2,1))
 plotRGB(defor1, r=1, g=2, b=3, stretch="lin")
 plotRGB(defor2, r=1, g=2, b=3, stretch="lin")
+
 #Digito defor1 e defor 2 per vedere i nomi delle bande e poi sottrarli
 defor1
 dvi1<-defor1$defor1.1-defor1$defor1.2
 plot(dvi1)
 cl <- colorRampPalette(c('darkblue','yellow','red','black'))(100)
 plot(dvi1, col=cl, main="DVI at time 1")
+
 #stessa procedura per defor2
 defor2
 dvi2<-defor2$defor2.1-defor2$defor2.2
@@ -22,10 +29,12 @@ plot(dvi2, col=cl, main="DVI at time 2")
 par(mfrow=c(1,2))
 plot(dvi1, col=cl)
 plot(dvi2, col=cl)
+
 #differenza tra indici di vegetazione
 difdvi <- dvi1 - dvi2
 cld <- colorRampPalette(c('blue','white','red'))(100) 
 plot(difdvi, col=cld)
+
 #ndvi
 #(NIR-RED) / (NIR+RED)
 ndvi1<- (defor1$defor1.1-defor1$defor1.2) / (defor1$defor1.1+defor1$defor1.2)
