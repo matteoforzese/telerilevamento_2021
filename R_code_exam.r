@@ -17,6 +17,10 @@ H2015<-brick("STHE15.jpg")
 MSH1982 <- unsuperClass(H1982, nClasses=3) 
 MSH1986 <- unsuperClass(H1986, nClasses=3) 
 
+par(mfrow=c(2,1), no.readonly = FALSE)
+plot(MSH1982)
+plot(MSH1986)
+
 
 
 
