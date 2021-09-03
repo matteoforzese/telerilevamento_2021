@@ -14,7 +14,8 @@ H2006<-brick("STHE06.jpg")
 H2010<-brick("STHE10.jpg")
 H2015<-brick("STHE15.jpg")
 
-
+MSH1982 <- unsuperClass(H1982, nClasses=3) 
+MSH1986 <- unsuperClass(H1986, nClasses=3) 
 
 
 
