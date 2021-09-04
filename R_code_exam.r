@@ -23,27 +23,39 @@ H1986<-reclassify(H1986, cbind(253:255, NA))
 
 
 plotRGB(H1986, r=1, g=2, b=3)
-par(mfrow=c(2,1), no.readonly = FALSE)
+par(mfrow=c(2,1))
 plot(H1980$map)
 plotRGB(IH1986$map)
 
-MSH1979 <- unsuperClass(H1979, nClasses=3)
-MSH1980 <- unsuperClass(H1980, nClasses=3)
-MSH1982 <- unsuperClass(H1982, nClasses=3) 
-MSH1986 <- unsuperClass(H1986, nClasses=3) 
+BWG<-colorRampPalette(c("black","white","green"))(100)
 
-par(mfrow=c(4,1), no.readonly = FALSE)
-plot(MSH1979$map)
-plot(MSH1980$map)
-plot(MSH1982$map)
-plot(MSH1986$map)
+MSH1979 <- unsuperClass(H1979, nClasses=3,stretch="lin")
+MSH1980 <- unsuperClass(H1980, nClasses=3,stretch="lin")
+MSH1982 <- unsuperClass(H1982, nClasses=3,stretch="lin") 
+MSH1986 <- unsuperClass(H1986, nClasses=3,stretch="lin") 
+MSH1990 <- unsuperClass(H1990, nClasses=3,stretch="lin")
+MSH1993 <- unsuperClass(H1993, nClasses=3,stretch="lin")
+MSH1998 <- unsuperClass(H1998, nClasses=3,stretch="lin")
+MSH2002 <- unsuperClass(H2002, nClasses=3,stretch="lin")
+MSH2006 <- unsuperClass(H2006, nClasses=3,stretch="lin")
 
+
+par(mfrow=c(5,2))
+plot(MSH1979$map, col=BWG)
+plot(MSH1980$map, col=BWG)
+plot(MSH1982$map, col=BWG)
+plot(MSH1986$map, col=BWG)
+plot(MSH1990$map, col=BWG)
+plot(MSH1993$map, col=BWG)
+plot(MSH1998$map, col=BWG)
+plot(MSH2002$map, col=BWG)
+plot(MSH2006$map, col=BWG)
 
 
 
 
 BWG<-colorRampPalette(c("black","white","green"))(100)
-GWBcolorRampPalette(c("green","white","black"))(100)
+GWB<-colorRampPalette(c("green","white","black"))(100)
 par(mfrow=c(3,1), no.readonly = FALSE)
 
 plot(MSH1979$map, col=BWG)
