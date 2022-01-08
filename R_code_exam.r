@@ -20,19 +20,19 @@ H2015<-brick("STHE15.jpg")
 
 BWG<-colorRampPalette(c("black","white","green"))(100)
 
-MSH1979 <- unsuperClass(H1979, nClasses=3,stretch="lin")
-MSH1980 <- unsuperClass(H1980, nClasses=3,stretch="lin")
-MSH1982 <- unsuperClass(H1982, nClasses=3,stretch="lin") 
-MSH1986 <- unsuperClass(H1986, nClasses=3,stretch="lin") 
-MSH1990 <- unsuperClass(H1990, nClasses=3,stretch="lin")
-MSH1993 <- unsuperClass(H1993, nClasses=3,stretch="lin")
-MSH1998 <- unsuperClass(H1998, nClasses=3,stretch="lin")
-MSH2002 <- unsuperClass(H2002, nClasses=3,stretch="lin")
-MSH2006 <- unsuperClass(H2006, nClasses=3,stretch="lin")
-MSH2010 <- unsuperClass(H2010, nClasses=3,stretch="lin")
-MSH2015 <- unsuperClass(H2015, nClasses=3,stretch="lin")
+MSH1979 <- unsuperClass(H1979$STHE79.1, nClasses=3,stretch="lin")
+MSH1980 <- unsuperClass(H1980$STHE80  nCsses=3,stretch="lin")
+MSH1982 <- unsuperClass(H1982$STHE.1, nClasses=3,stretch="lin") 
+MSH1986 <- unsuperClass(H1986$STHE.1, nClasses=3,stretch="lin") 
+MSH1990 <- unsuperClass(H1990$STHE.1, nClasses=3,stretch="lin")
+MSH1993 <- unsuperClass(H1993$STHE.1, nClasses=3,stretch="lin")
+MSH1998 <- unsuperClass(H1998$STHE.1, nClasses=3,stretch="lin")
+MSH2002 <- unsuperClass(H2002$STHE.1, nClasses=3,stretch="lin")
+MSH2006 <- unsuperClass(H2006$STHE.1, nClasses=3,stretch="lin")
+MSH2010 <- unsuperClass(H2010$STHE.1, nClasses=3,stretch="lin")
+MSH2015 <- unsuperClass(H2015$STHE.1, nClasses=3,stretch="lin")
 
-par(mfrow=c(5,2))
+par(mfrow=c(4,3))
 plot(MSH1979$map, col=BWG)
 plot(MSH1980$map, col=BWG)
 plot(MSH1982$map, col=BWG)
@@ -65,8 +65,6 @@ plot(MSH2010$map)
 freq(MSH2010$map)
 plot(MSH2015$map)
 freq(MSH2015$map)
-
-
 
 
 
