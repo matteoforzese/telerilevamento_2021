@@ -50,27 +50,40 @@ plot(MSH2010$map, col=GBW)
 plot(MSH2015$map, col=WBG)
 
 plot(MSH1979$map, col=BWG)
-freq(MSH1979$map)
+freq(MSH1979$map) #Altro 95306 Vulcanica 21912 Alberi 228382
 plot(MSH1980$map, col=BWG)
-freq(MSH1980$map)
+freq(MSH1980$map) #Altro 112500 Vulcanica 96058  Alberi 137042
 plot(MSH1982$map, col=BWG)
-freq(MSH1982$map)
+freq(MSH1982$map) #Altro 108518 Vulcanica 82530 Alberi 154552
 plot(MSH1986$map, col=BWG)
-freq(MSH1986$map)
+freq(MSH1986$map) #Altro 112503 Vulcanica 102022 Alberi 131075
 plot(MSH1990$map, col=BWG)
-freq(MSH1990$map)
+freq(MSH1990$map) #Altro 101195 Vulcanica 104194 Alberi 140211 
 plot(MSH1993$map, col=BWG)
-freq(MSH1993$map)
+freq(MSH1993$map) #Altro 101674 Vulcanica 92231 Alberi 151695
 plot(MSH1998$map, col=BWG)
-freq(MSH1998$map)
+freq(MSH1998$map) #Altro 95659 Vulcanica 92701 Alberi 157240
 plot(MSH2002$map, col=BWG)
-freq(MSH2002$map)
+freq(MSH2002$map) #Altro 82039 Vulcanica 76983 Alberi 186578
 plot(MSH2006$map, col=BWG)
-freq(MSH2006$map)
+freq(MSH2006$map) #Altro 74597 Vulcanica 71047 Alberi 199956
 plot(MSH2010$map, col=BWG)
-freq(MSH2010$map)
+freq(MSH2010$map) #Altro 73229 Vulcanica 64062 Alberi 208309
 plot(MSH2015$map, col=BWG)
-freq(MSH2015$map)
+freq(MSH2015$map) #Altro 57983 Vulcanica 54346 Alberi 233271
+AreaTot<-345600
+
+P79<-freq(MSH1979$map)/AreaTot #Altro 0,28 Vulcanica 0,06 Alberi 0,66
+P80<-freq(MSH1980$map)/AreaTot #Altro 0,32 Vulcanica 0,28 Alberi 0,40
+P82<-freq(MSH1982$map)/AreaTot #Altro 0,31 Vulcanica 0,24 Alberi 0,45
+P86<-freq(MSH1986$map)/AreaTot #Altro 0,33 Vulcanica 0,29 Alberi 0,38
+P90<-freq(MSH1990$map)/AreaTot #Altro 0,29 Vulcanica 0,30 Alberi 0,41
+P93<-freq(MSH1993$map)/AreaTot #Altro 0,29 Vulcanica 0,27 Alberi 0,44
+P98<-freq(MSH1998$map)/AreaTot #Altro 0,28 Vulcanica 0,27 Alberi 0,45
+P02<-freq(MSH2002$map)/AreaTot #Altro 0,24 Vulcanica 0,22 Alberi 0,54
+P06<-freq(MSH2006$map)/AreaTot #Altro 0,22 Vulcanica 0,20 Alberi 0,58
+P10<-freq(MSH2010$map)/AreaTot #Altro 0,21 Vulcanica 0,19 Alberi 0,60
+P15<-freq(MSH2015$map)/AreaTot #Altro 0,17 Vulcanica 0,16 Alberi 0,67
 
 
 
