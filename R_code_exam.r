@@ -85,7 +85,19 @@ P06<-freq(MSH2006$map)/AreaTot #Altro 0,22 Vulcanica 0,20 Alberi 0,58
 P10<-freq(MSH2010$map)/AreaTot #Altro 0,21 Vulcanica 0,19 Alberi 0,60
 P15<-freq(MSH2015$map)/AreaTot #Altro 0,17 Vulcanica 0,16 Alberi 0,67
 
+ALTRO=c(0.28, 0.32, 0.31, 0.33, 0.29, 0.29, 0.28, 0.24, 0.22, 0.21, 0.17) 
+VULCANICA=c(0.06, 0.28, 0.24, 0.29, 0.30, 0.27, 0.27, 0.22, 0.20, 0.19, 0.16)
+ALBERI=c(0.66, 0.40, 0.45, 0.38, 0.41, 0.44, 0.45, 0.54, 0.58, 0.60, 0.67)
+ANNO=c(1979, 1980, 1982, 1986, 1990, 1993, 1998, 2002, 2006, 2010, 2015) 
+SAINTHELEN= data.frame (ANNO, ALTRO, VULCANICA, ALBERI)
 
+ggplot(SAINTHELEN, aes(x=ANNO)) + 
+geom_line(aes(y=ALBERI), color="Green") +
+geom_line(aes(y=ALTRO), color="Grey") +
+geom_line(aes(y=VULCANICA), color="Black")
+
+ggplot(SAINTHELEN, aes(x = ANNO)) +  
+  geom_bar((y = ALBERI/sum(100)))
 
 
 
