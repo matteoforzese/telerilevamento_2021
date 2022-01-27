@@ -52,7 +52,7 @@ plot(MSH2015$map, col=WBG)
 plot(MSH1979$map, col=BWG)
 freq(MSH1979$map) #Altro 95306 Vulcanica 21912 Alberi 228382
 plot(MSH1980$map, col=BWG)
-freq(MSH1980$map) #Altro 112500 Vulcanica 96058  Alberi 137042
+freq(MSH1980$map) #Altro 112500 Vulcanica 96058 Alberi 137042
 plot(MSH1982$map, col=BWG)
 freq(MSH1982$map) #Altro 108518 Vulcanica 82530 Alberi 154552
 plot(MSH1986$map, col=BWG)
@@ -92,12 +92,29 @@ ANNO=c(1979, 1980, 1982, 1986, 1990, 1993, 1998, 2002, 2006, 2010, 2015)
 SAINTHELEN= data.frame (ANNO, ALTRO, VULCANICA, ALBERI)
 
 ggplot(SAINTHELEN, aes(x=ANNO)) + 
-geom_line(aes(y=ALBERI), color="Green") +
-geom_line(aes(y=ALTRO), color="Grey") +
-geom_line(aes(y=VULCANICA), color="Black")
+geom_line(aes(y=ALBERI), color="Green",show.legend=TRUE,na.rm=TRUE) +
+geom_line(aes(y=ALTRO), color="Grey", show.legend=TRUE,na.rm=TRUE) +
+geom_line(aes(y=VULCANICA), color="Black", show.legend=TRUE, na.rm=TRUE)
+
+bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) +
+geom_bar(width = 1, stat = "identity") 
+bpa
+bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
+geom_bar(width = 1, stat = "identity") 
+bpv
+bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
+geom_bar(width = 1, stat = "identity")
+bpo
 
 ggplot(SAINTHELEN, aes(x = ANNO)) +  
   geom_bar((y = ALBERI/sum(100)))
+
+
+
+
+
+
+
 
 
 
