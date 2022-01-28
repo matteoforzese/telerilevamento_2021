@@ -1,1 +1,392 @@
+#####R_code_remote_sensing_first######-1
+
+# primo codice in R per telerilevamento
+
+#Per installare i vari pacchetti di R, le virgolette indicano un'azione che necessita di uscire da R
+install.packages("raster")
+
+#Con questa funzione scelgo la Working directory, la cartella lab
+setwd("C:/lab/")
+
+#utilizzare pacchetto raster su R
+library(raster)
+
+#importare immagine satellitare, rinomino il file tramite la freccetta per semplificare il lavoro
+p224r63_2011<-brick("p224r63_2011_masked.grd")
+
+#Dà informazioni sul file
+p224r63_2011
+
+#Permette di visualizzare il file su R, vedo 7 mappe, una per ogni banda del satellite
+plot(p224r63_2011)
+
+#cambiare i colori di visualizzazione
+cl<-colorRampPalette(c("black","grey","light grey"))(100)
+
+#plottare con nuovi colori
+plot(p224r63_2011, col=cl)
+
+#altro esempio
+colore<-colorRampPalette(c("blue","green","magenta"))(100)
+plot(p224r63_2011, col=colore)
+
+
+#Tutte le possibili bande
+#B1:BLU
+#B2:VERDE
+#B3:ROSSO
+#B4:INFRAROSSO VICINO
+#B5:INFRAROSSO MEDIO
+#B6:INFRAROSSO TERMICO
+#B7:INFRAROSSO MEDIO
+
+#pulire grafica corrente
+dev.off()
+
+#Per legare due blocchi usiamo $, plottiamo una banda
+plot (p224r63_2011$B1_sre)
+
+#plottare banda 1 con color ramp palette nuova
+plot (p224r63_2011$B1_sre, col=colore)
+
+dev.off()
+
+#Nuovo plottaggio con più bande, in un sistema organizzato di righe e colonne; in questo caso per sistemare immagini in 1 riga 2 colonne
+par(mfrow=c(1,2))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+
+#plottare 4 immagini in quattro righe e una colonna
+par(mfrow=c(4,1))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+
+#altro quadrato di bande, stavolta 2x2
+par(mfrow=c(2,2))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+
+#2x2, con colori che rispecchiano le bande
+par(mfrow=c(2,2))
+clb <- colorRampPalette(c("dark blue","blue","light blue")) (100)
+plot(p224r63_2011$B1_sre, col=clb)
+clg <- colorRampPalette(c("dark green","green","light green")) (100)
+plot(p224r63_2011$B2_sre, col=clg)
+clr <- colorRampPalette(c("dark red","red","pink")) (100)
+plot(p224r63_2011$B3_sre, col=clr)
+clnir <- colorRampPalette(c("red","orange","yellow")) (100)
+plot(p224r63_2011$B4_sre, col=clnir)
+
+
+p224r63_2011 <- brick("p224r63_2011_masked.grd")
+#plottare immagini con schema RGB, stretch lineare per evitare schiacciamento verso una parte del colore
+plotRGB(p224r63_2011,r=3,g=2,b=1,stretch="Lin")
+#aggiungo infrarossi, tolgo blu
+plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
+#prova con inversione infrarosso-verde
+plotRGB(p224r63_2011,r=3,g=4,b=2,stretch="Lin")
+#prova con inversione infrarosso-blu
+plotRGB(p224r63_2011,r=3,g=2,b=4,stretch="Lin")
+
+#creare PDF
+pdf("primopdfR.pdf")
+
+#2x2, con vari assetti RGB
+par(mfrow=c(2,2))
+plotRGB(p224r63_2011,r=3,g=2,b=1,stretch="Lin")
+plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
+plotRGB(p224r63_2011,r=3,g=4,b=2,stretch="Lin")
+plotRGB(p224r63_2011,r=3,g=2,b=4,stretch="Lin")
+
+dev.off()
+
+#due plot con stretch lineare e istogramma, che mostra più dettagli
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
+
+# par con colori naturali, falsi e falsi con stretch istogramma
+par(mfrow=c(3,1))
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
+
+#installo nuovo pacchetto
+install.packages("RStoolbox")
+library(Rstoolbox)
+
+#Multitemporal set, confronto tra 1988 e 2011
+p224r63_1988 <- brick("p224r63_1988_masked.grd")
+p224r63_1988
+plot(p224r63_1988)
+plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
+
+#confronto 1988-2011
+par(mfrow=c(2,1))
+plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
+plotRGB(p224r63_2011, r=3, g=2, b=1, stretch="Lin")
+
+#Creare nuovo PDF
+pdf("confronto 88-11")
+#Par 2x2 con immagini con stretch lineare e istogramma per confronto
+par(mfrow=c(2,2))
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="hist")
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="hist")
+dev.off()
+
+
+
+
+
+
+
+
+
+######R_code_time_series.r######-2
+#Time series analisys
+#Greenland increase of temperature
+#Data and code from Emanuela Cosma
+
+library(raster)
+
+#installare pacchetto che ottimizza la visualizzazione dei dati raster
+install.packages("rasterVis")
+
+library(rasterVis)
+
+#La working directory è impostata nella cartella greenland all'interno della cartella lab
+setwd("C:/lab/greenland")
+
+#creare oggetto Rasterlayer
+lst_2000<-raster("lst_2000.tif")
+lst_2005<-raster("lst_2005.tif")
+lst_2010<-raster("lst_2010.tif")
+lst_2015<-raster("lst_2015.tif")
+
+#immagine con i 4 elementi 2x2
+par(mfrow=c(2,2))
+plot(lst_2000)
+plot(lst_2005)
+plot(lst_2010)
+plot(lst_2015)
+
+#creare una lista di file 
+r.list<-list.files(pattern="lst")
+r.list
+
+#funzione che applica un'altra funzione a una lista di file 
+import<-lapply(r.list, raster)
+import
+
+#riunire file in un unico pacchetto
+TGr<-stack(import)
+TGr
+plot(TGr)
+
+#sovrapposizione tre immagini associate ad R, G e B
+plotRGB(TGr,1,2,3,stretch="Lin")
+
+#singola legenda per blocco intero che viene plottato tutto insieme, con Level plot vediamo colori molto più dettagliati rispetto a normale plot
+levelplot(TGr)
+cl<-colorRampPalette(c("blue","light blue","pink","red"))(100)
+levelplot(TGr, col.regions=cl)
+levelplot(TGr, col.regions=cl,names.attr=c("July 2000", "July 2005","July 2010","July 2015"))
+levelplot(TGr, col.regions=cl, main="LST variation in time", names.attr=c("July 2000", "July 2005","July 2010","July 2015"))
+
+#Melt, dati sullo scioglimento
+#nuova lista
+meltlist<-list.files(pattern="melt")
+meltgreenland<-lapply(meltlist, raster)
+melt<-stack(meltgreenland)
+levelplot(melt)
+
+#sottrazione tra due matrici di dati, colori mappa X - colori mappa Y
+#$ + nome dello strato mi permette la singola visualizzazione
+melt_amount<-melt$X2007annual_melt-melt$X1979annual_melt
+
+clb<-colorRampPalette(c("white","blue","pink","red"))(100)
+plot(melt_amount,col=clb)
+
+install.packages("knitr")
+
+
+
+
+
+
+
+
+
+#####R_code_copernicus.r######-3
+#visualizing copernicus data
+#ci serviranno la libreria Raster per leggere i raster e la libreria NCD per leggere i file ncd
+install.packages("ncdf4")
+library(raster)
+library(ncdf4)
+setwd("C:/lab/")
+
+#caricamento di un nuovo file .nc su R
+water<-raster("c_gls_WB100_202103010000_GLOBE_S2_V1.0.1.nc")
+cl <- colorRampPalette(c('light blue','green','red','yellow'))(100) #
+plot(water, col=cl)
+
+#riclassificare i colori dell'immagine
+water<- raster::reclassify(lswt, cbind(252:255, NA), right=TRUE) 
+
+#resampling, modifica la quantità di pixel/risoluzione dell'immagine, aggregando pixel in pixel più grandi attraverso la loro media, riduce il peso del file. 
+#Il 100 corrisponde al numero di celle raggruppate per formare delle celle più grandi. Con 50 si diminuisce di 2500 volte la risoluzione 
+waterres<-aggregate(water, fact=100)
+plot(waterres, col=cl)
+
+
+
+
+
+
+
+
+##### R_code_knitr.R #####-4
+#using knitr to create a report
+
+setwd("C:/lab/")
+
+#Permette di usare le funzioni e codici knit R
+install.packages("knitr")
+
+library(knitr)
+
+#creare automaticamente un report basato su uno script di R e un template, su PC tramite qualunque gestoredi testo
+stitch("R_code_greenland.r.txt", template=system.file("misc", "knitr-template.Rnw", package="knitr"))
+#risolto errore aggiungendo .txt
+
+
+
+
+
+
+
+
+
+##### R_code_classification.r #####-5
+setwd("C:/lab/")
+library(raster)
+library(RStoolbox)
+
+#importo immagine tramite funzione brick
+sol <- brick("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+sol
+
+#utilizzo plotRGB per visualizzare l'immagine, stretch per usare tutto il range di colori da 0 a 255
+plotRGB(sol, 1,2,3, stretch="lin")
+plotRGB(sol, 2,1,3, stretch="lin")
+plotRGB(sol, 3,2,1, stretch="lin")
+set.seed(42)
+
+#UNSUPERVISED CLASSIFICATION: Tecnica che consiste nel fornire al sistema informatico una serie di input che egli riclassificherà ed organizzerà sulla base di caratteristiche comuni per cercare di effettuare ragionamenti e previsioni sugli input successivi, permette di classificare ad esempio quando una determinata patch del suolo risulta essere X (es. acqua) o Y (es. bosco)
+soc <- unsuperClass(sol, nClasses=3)
+
+#prova con 20 classi
+snt <- unsuperClass(sol, nClasses=20)
+plot(snt$map,col=cl)
+
+cl <- colorRampPalette(c('yellow','red','black'))(100)
+plot(soc$map,col=cl)
+
+#download immagine da ESA, chiamata "Spiral_snapshot_pillars"
+spiral<-brick("Spiral_snapshot_pillars.jpg")
+spiralUC<-unsuperClass(spiral, nClasses=3)
+plot(spiralUC$map,col=cl)
+
+
+
+par(mfrow=c(1,2))
+plotRGB(sol, 1,2,3, stretch="lin")
+plot(soe$map,col=cl)
+cl <- colorRampPalette(c('yellow','black','red'))(100)
+par(mfrow=c(1,2))
+plotRGB(sol, 1,2,3, stretch="lin")
+plot(soc$map,col=cl)
+
+
+
+
+
+#GRAN CANYON DATA
+setwd("C:/lab/")
+library(raster)
+library(RStoolbox)
+gc<-brick("dolansprings_oli_2013088_canyon_lrg.jpg")
+plotRGB(gc, 1,2,3, stretch="lin")
+
+#utilizzo stretch diverso 
+plotRGB(gc, 1,2,3, stretch="hist")
+gcc2 <- unsuperClass(gc, nClasses=2)
+plot(gcc2$map)
+
+#aumento numero classi
+gcc4 <- unsuperClass(gc, nClasses=4)
+plot(gcc4$map)
+
+
+
+
+
+
+
+
+
+
+
+##### R_code_multivariate_analysis.r #####-6
+#Si possono vedere file/immagini con diversa varianza/variabilità utilizzando delle funzioni. Queste prendono il nome di ANALISI MULTIVARIATE
+setwd("C:/lab/")
+library (raster)
+library (RStoolbox)
+p224r63_2011<-brick("p224r63_2011_masked.grd")
+plot(p224r63_2011)
+#Plot banda 1 su banda 2, otterremo un piano cartesiano XY con una scia di punti che studiano la varianza dei colori
+plot(p224r63_2011$B1_sre, p224r63_2011$B2_sre, col="red", pch=19, cex=2)
+
+#per trovare correlazione tra tutte le variabili a due a due
+pairs(p224r63_2011)
+
+#a causa di pesantezza della pca diminuiamo la grandezza del file abbassandone la risoluzione 
+#aggregate cells: resampling (ricampionamento)
+p224r63_2011res<-aggregate(p224r63_2011, fact=10)
+
+par(mfrow=c(2,1))
+plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="lin")
+plotRGB(p224r63_2011res, r=4, g=3, b=2, stretch="lin")
+
+#principal component analysis
+#funzione rasterPCA permette di identificare la PCA passando da una variabilità maggiore ad una minore, che sia però rappresentativa. 
+p224r63_2011res_pca <- rasterPCA(p224r63_2011res)
+
+#spiega quasi la totalità della varianza in questo modello (è praticamente un riassunto)
+summary(p224r63_2011res_pca$model)
+
+dev.off()
+plotRGB(p224r63_2011res_pca$map, r=1,g=2,b=3,stretch="lin")
+
+#add from students: visualizzare in modo compatto la struttura di un oggetto R 
+str(p224r63_2011res_pca)
+
+
+
+
+
+
+
+
+
+
+
+
+##### R_code_vegetation_indices.r #####-7
+
 
