@@ -13,6 +13,7 @@ plot(water, col=cl)
 #riclassificare i colori dell'immagine
 water<- raster::reclassify(lswt, cbind(252:255, NA), right=TRUE) 
 
-#resampling,modifica la quantità di pixel/risoluzione dell'immagine, riduce il peso del file. Il 100 corrisponde al numero di celle raggruppate per formare delle celle più grandi. Con 50 si diminuisce di 2500 volte la risoluzione 
+#resampling, modifica la quantità di pixel/risoluzione dell'immagine, aggregando pixel in pixel più grandi attraverso la loro media, riduce il peso del file. 
+#Il 100 corrisponde al numero di celle raggruppate per formare delle celle più grandi. Con 50 si diminuisce di 2500 volte la risoluzione 
 waterres<-aggregate(water, fact=100)
 plot(waterres, col=cl)
