@@ -33,7 +33,7 @@ r.list
 import<-lapply(r.list, raster)
 import
 
-#riunire file in un unico blocco
+#riunire file in un unico pacchetto
 TGr<-stack(import)
 TGr
 plot(TGr)
@@ -56,6 +56,7 @@ melt<-stack(meltgreenland)
 levelplot(melt)
 
 #sottrazione tra due matrici di dati, colori mappa X - colori mappa Y
+#$ + nome dello strato mi permette la singola visualizzazione
 melt_amount<-melt$X2007annual_melt-melt$X1979annual_melt
 
 clb<-colorRampPalette(c("white","blue","pink","red"))(100)
