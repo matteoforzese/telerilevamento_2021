@@ -7,6 +7,6 @@ install.packages("knitr")
 
 library(knitr)
 
-#creare automaticamente un report basato su uno script di R e un template
+#creare automaticamente un report basato su uno script di R e un template, su PC tramite qualunque gestoredi testo
 stitch("R_code_greenland.r.txt", template=system.file("misc", "knitr-template.Rnw", package="knitr"))
 #risolto errore aggiungendo .txt
