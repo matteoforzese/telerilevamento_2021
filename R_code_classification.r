@@ -22,7 +22,7 @@ plot(snt$map,col=cl)
 cl <- colorRampPalette(c('yellow','red','black'))(100)
 plot(soc$map,col=cl)
 
-#download image from ESA, called "Spiral_snapshot_pillars"
+#download immagine da ESA, chiamata "Spiral_snapshot_pillars"
 spiral<-brick("Spiral_snapshot_pillars.jpg")
 spiralUC<-unsuperClass(spiral, nClasses=3)
 plot(spiralUC$map,col=cl)
