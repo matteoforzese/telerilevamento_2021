@@ -10,7 +10,7 @@ plot(p224r63_2011$B1_sre, p224r63_2011$B2_sre, col="red", pch=19, cex=2)
 #per trovare correlazione tra tutte le variabili a due a due
 pairs(p224r63_2011)
 
-#a causa di pesantezza di pca diminuiamo la grandezza del file abbassandone la risoluzione
+#a causa di pesantezza della pca diminuiamo la grandezza del file abbassandone la risoluzione 
 #aggregate cells: resampling (ricampionamento)
 p224r63_2011res<-aggregate(p224r63_2011, fact=10)
 
@@ -19,6 +19,7 @@ plotRGB(p224r63_2011, r=4, g=3, b=2, stretch="lin")
 plotRGB(p224r63_2011res, r=4, g=3, b=2, stretch="lin")
 
 #principal component analysis
+#funzione rasterPCA permette di identificare la PCA passando da una variabilità maggiore ad una minore, che sia però rappresentativa. 
 p224r63_2011res_pca <- rasterPCA(p224r63_2011res)
 
 #spiega quasi la totalità della varianza in questo modello (è praticamente un riassunto)
