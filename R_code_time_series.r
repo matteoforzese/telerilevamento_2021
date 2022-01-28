@@ -62,6 +62,7 @@ melt_amount<-melt$X2007annual_melt-melt$X1979annual_melt
 clb<-colorRampPalette(c("white","blue","pink","red"))(100)
 plot(melt_amount,col=clb)
 
+#permette di creare dei report finali delle operazioni su R
 install.packages("knitr")
 
 
