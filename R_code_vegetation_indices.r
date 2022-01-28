@@ -41,6 +41,7 @@ ndvi1<- (defor1$defor1.1-defor1$defor1.2) / (defor1$defor1.1+defor1$defor1.2)
 plot(ndvi1, col=cl)
 ndvi2<- (defor2$defor2.1-defor2$defor2.2) / (defor2$defor2.1+defor2$defor2.2)
 plot(ndvi2, col=cl)
+
 #La funzione si potrebbe calcolare anche con RStoolbox::spectralIndices
 vi1<-spectralIndices(defor1, green=3, red=2, nir=1)
 plot(vi1, col=cl)
