@@ -1,6 +1,6 @@
 # primo codice in R per telerilevamento
 
-#Per intstallare i vari pacchetti di R, le virgolette indicano un'azione che necessita di uscire da R
+#Per installare i vari pacchetti di R, le virgolette indicano un'azione che necessita di uscire da R
 install.packages("raster")
 
 #Con questa funzione scelgo la Working directory, la cartella lab
@@ -12,7 +12,7 @@ library(raster)
 #importare immagine satellitare, rinomino il file tramite la freccetta per semplificare il lavoro
 p224r63_2011<-brick("p224r63_2011_masked.grd")
 
-#Da informazioni sul file
+#Dà informazioni sul file
 p224r63_2011
 
 #Permette di visualizzare il file su R, vedo 7 mappe, una per ogni banda del satellite
@@ -49,7 +49,7 @@ plot (p224r63_2011$B1_sre, col=colore)
 
 dev.off()
 
-#Nuovo plottaggio con più bande, per sistemare immagini in 1 riga 2 colonne
+#Nuovo plottaggio con più bande, in un sistema organizzato di righe e colonne; in questo caso per sistemare immagini in 1 riga 2 colonne
 par(mfrow=c(1,2))
 plot(p224r63_2011$B1_sre)
 plot(p224r63_2011$B2_sre)
@@ -81,7 +81,7 @@ plot(p224r63_2011$B4_sre, col=clnir)
 
 
 p224r63_2011 <- brick("p224r63_2011_masked.grd")
-#plottare immagini con schema RGB, stretch lineare
+#plottare immagini con schema RGB, stretch lineare per evitare schiacciamento verso una parte del colore
 plotRGB(p224r63_2011,r=3,g=2,b=1,stretch="Lin")
 #aggiungo infrarossi, tolgo blu
 plotRGB(p224r63_2011,r=4,g=3,b=2,stretch="Lin")
@@ -102,7 +102,7 @@ plotRGB(p224r63_2011,r=3,g=2,b=4,stretch="Lin")
 
 dev.off()
 
-#due plot con stretch lineare e istogramma
+#due plot con stretch lineare e istogramma, che mostra più dettagli
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
 plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="hist")
 
