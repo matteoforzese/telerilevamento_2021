@@ -3,7 +3,6 @@ library(raster)  #permette l'utilizzo dei raster e funzioni annesse
 library(RStoolbox) #permette l'uso della Unsupervised Classification
 library(ggplot2)  #permette l'uso delle funzioni ggplot
 library(gridExtra)   #permette l'uso e creazione di griglie, tabelle e grafici
-library(rasterdiv)
 
 H1979<-brick("STHE79.jpg")
 H1980<-brick("STHE80.jpg")
