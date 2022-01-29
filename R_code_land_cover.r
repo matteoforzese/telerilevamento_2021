@@ -69,7 +69,7 @@ percent_2006<- c(51.9,48.1)
 percentages<-data.frame(cover, percent_1992, percent_2006)
 percentages
 
-#plot
+#grafico ggplot, aes mappa le variabili, geom_bar dà info sulla visualizzazione dell'informazione
 p1<-ggplot(percentages, aes(x=cover, y=percent_1992, color=cover)) + geom_bar(stat="identity", fill="white")
 p2<-ggplot(percentages, aes(x=cover, y=percent_2006, color=cover)) + geom_bar(stat="identity", fill="white")
 
