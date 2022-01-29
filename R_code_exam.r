@@ -16,13 +16,6 @@ H2006<-brick("STHE06.jpg")
 H2010<-brick("STHE10.jpg")
 H2015<-brick("STHE15.jpg")
 
-BWG<-colorRampPalette(c("black","white","green"))(100)
-WGB<-colorRampPalette(c("white","green","black"))(100)
-GBW<-colorRampPalette(c("green","black","white"))(100)
-GWB<-colorRampPalette(c("green","white","black"))(100)
-BGW<-colorRampPalette(c("black","green","white"))(100)
-WBG<-colorRampPalette(c("white","black","green"))(100)
-
 MSH1979<- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="hist")
 MSH1980<- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="hist")
 MSH1982<- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="hist")
@@ -34,6 +27,8 @@ MSH2002<- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="hist")
 MSH2006<- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="hist")
 MSH2010<- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="hist")
 MSH2015<- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="hist")
+
+BWG<-colorRampPalette(c("black","white","green"))(100)
 
 plot(MSH1979$map, col=BWG)
 freq(MSH1979$map) #Altro 95306 Vulcanica 21912 Alberi 228382
@@ -110,6 +105,12 @@ ggplot(SAINTHELEN, aes(x = ANNO)) +
 
 
 
+BWG<-colorRampPalette(c("black","white","green"))(100)
+WGB<-colorRampPalette(c("white","green","black"))(100)
+GBW<-colorRampPalette(c("green","black","white"))(100)
+GWB<-colorRampPalette(c("green","white","black"))(100)
+BGW<-colorRampPalette(c("black","green","white"))(100)
+WBG<-colorRampPalette(c("white","black","green"))(100)
 
 
 MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="lin")
