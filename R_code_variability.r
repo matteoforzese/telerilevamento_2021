@@ -1,3 +1,4 @@
+#calcolo eterogeneità tramite dati Sentinel
 library(raster)
 library(RStoolbox)
 library(ggplot2) #for ggplot plotting
@@ -15,6 +16,7 @@ ndvi<-(nir-red)/(nir+red)
 plot(ndvi)
 cl <- colorRampPalette(c('black','white','red','magenta','green'))(100) # 
 plot(ndvi,col=cl)
+
 #funzione focal per dati statistici, sd in questo caso è la deviazione standard
 ndvisd3 <- focal(ndvi, w=matrix(1/9, nrow=3, ncol=3), fun=sd)
 plot(ndvisd3)
@@ -26,6 +28,7 @@ ndvisd13 <- focal(ndvi, w=matrix(1/169, nrow=13, ncol=13), fun=sd)
 plot(ndvisd13, col=clsd)
 ndvisd5 <- focal(ndvi, w=matrix(1/25, nrow=5, ncol=5), fun=sd)
 plot(ndvisd5, col=clsd)
+
 #esiste un altro metodo, la PCA
 sentpca <- rasterPCA(sent)
 plot(sentpca$map)
