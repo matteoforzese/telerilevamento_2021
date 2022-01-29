@@ -15,6 +15,7 @@ par(mfrow=c(2,1))
 plotRGB(defor1, r=1, g=2, b=3, stretch="lin")
 plotRGB(defor2, r=1, g=2, b=3, stretch="lin")
 
+#per calcolare il DVI, difference vegetation index. E' un indice di vegetazione, è dato dalla differenza tra la riflettanza nell’infrarosso vicino e quella nel rosso, sa cala la vegetazione è meno in salute
 #Digito defor1 e defor 2 per vedere i nomi delle bande e poi sottrarli
 defor1
 dvi1<-defor1$defor1.1-defor1$defor1.2
@@ -35,8 +36,11 @@ difdvi <- dvi1 - dvi2
 cld <- colorRampPalette(c('blue','white','red'))(100) 
 plot(difdvi, col=cld)
 
-#ndvi
-#(NIR-RED) / (NIR+RED)
+# il DVI può essere normalizzato per ottenere l'NDVI
+# i valori di riflettanza dipendono dai bit. In calcolo del DVI posso confrontare solo immagini con gli stessi bit. 
+#NDVI assume valori che vanno da -1 a 1 e permette confronti anche tra immagini a bit differenti.
+#ndvi 
+#NDVI=(NIR-RED) / (NIR+RED)
 ndvi1<- (defor1$defor1.1-defor1$defor1.2) / (defor1$defor1.1+defor1$defor1.2)
 plot(ndvi1, col=cl)
 ndvi2<- (defor2$defor2.1-defor2$defor2.2) / (defor2$defor2.1+defor2$defor2.2)
