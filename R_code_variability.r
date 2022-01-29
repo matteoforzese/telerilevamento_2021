@@ -34,8 +34,9 @@ sentpca <- rasterPCA(sent)
 plot(sentpca$map)
 #per vedere da cosa è composta
 sentpca
+#per vedere quanta variabilità spiegano le singole componenti
 summary(sentpca$model)
-#la prima componente spiega più delle altre perchè l'asse viene passato dentro il ... più ampio
+#la prima componente spiega più delle altre 
 
 
 #guardiamo le componenti di sentpca, la prima si chiama PC1
