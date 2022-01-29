@@ -24,29 +24,17 @@ GWB<-colorRampPalette(c("green","white","black"))(100)
 BGW<-colorRampPalette(c("black","green","white"))(100)
 WBG<-colorRampPalette(c("white","black","green"))(100)
 
-MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="lin")
-MSH1980 <- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="lin")
-MSH1982 <- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="lin")
-MSH1986 <- unsuperClass(H1986$STHE86.1, nClasses=3,stretch="lin")
-MSH1990 <- unsuperClass(H1990$STHE90.1, nClasses=3,stretch="lin")
-MSH1993 <- unsuperClass(H1993$STHE93.1, nClasses=3,stretch="lin")
-MSH1998 <- unsuperClass(H1998$STHE98.1, nClasses=3,stretch="lin")
-MSH2002 <- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="lin")
-MSH2006 <- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="lin")
-MSH2010 <- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="lin")
-MSH2015 <- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="lin")
-
-MSH1979h <- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="hist")
-MSH1980h <- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="hist")
-MSH1982h <- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="hist")
-MSH1986h <- unsuperClass(H1986$STHE86.1, nClasses=3,stretch="hist")
-MSH1990h <- unsuperClass(H1990$STHE90.1, nClasses=3,stretch="hist")
-MSH1993h <- unsuperClass(H1993$STHE93.1, nClasses=3,stretch="hist")
-MSH1998h <- unsuperClass(H1998$STHE98.1, nClasses=3,stretch="hist")
-MSH2002h <- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="hist")
-MSH2006h <- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="hist")
-MSH2010h <- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="hist")
-MSH2015h <- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="hist")
+MSH1979<- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="hist")
+MSH1980<- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="hist")
+MSH1982<- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="hist")
+MSH1986<- unsuperClass(H1986$STHE86.1, nClasses=3,stretch="hist")
+MSH1990<- unsuperClass(H1990$STHE90.1, nClasses=3,stretch="hist")
+MSH1993<- unsuperClass(H1993$STHE93.1, nClasses=3,stretch="hist")
+MSH1998<- unsuperClass(H1998$STHE98.1, nClasses=3,stretch="hist")
+MSH2002<- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="hist")
+MSH2006<- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="hist")
+MSH2010<- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="hist")
+MSH2015<- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="hist")
 
 plot(MSH1979$map, col=BWG)
 freq(MSH1979$map) #Altro 95306 Vulcanica 21912 Alberi 228382
@@ -119,6 +107,23 @@ ggplot(SAINTHELEN, aes(x = ANNO)) +
 
 
 
+
+
+
+
+
+
+MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="lin")
+MSH1980 <- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="lin")
+MSH1982 <- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="lin")
+MSH1986 <- unsuperClass(H1986$STHE86.1, nClasses=3,stretch="lin")
+MSH1990 <- unsuperClass(H1990$STHE90.1, nClasses=3,stretch="lin")
+MSH1993 <- unsuperClass(H1993$STHE93.1, nClasses=3,stretch="lin")
+MSH1998 <- unsuperClass(H1998$STHE98.1, nClasses=3,stretch="lin")
+MSH2002 <- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="lin")
+MSH2006 <- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="lin")
+MSH2010 <- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="lin")
+MSH2015 <- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="lin")
 BWG<-colorRampPalette(c("black","white","green"))(100)
 GWB<-colorRampPalette(c("green","white","black"))(100)
 par(mfrow=c(3,1), no.readonly = FALSE)
