@@ -19,7 +19,7 @@ H2015<-brick("STHE15.jpg")
 
 #Plotto tramite la funzione "plotRGB" le immagini con colori naturali, in questo caso con la banda del rosso è la prima, quella del verde la seconda e quella del blu la terza
 #Le prime tre immagini non hanno la banda del blu perchè sono state raccolte dal satellite Landsat3 che ne è privo
-#Uso stretch "hist" per acuire le differenze di colore
+#Uso stretch "hist" per acuire il contrasto di colore
 plotRGB(H1979, r=2, g=3, stretch="hist")
 plotRGB(H1980, r=2, g=3, stretch="hist")
 plotRGB(H1982, r=2, g=3, stretch="hist")
@@ -34,7 +34,7 @@ plotRGB(H2015, r=1, g=2, b=3, stretch="hist")
 
 #Classifico le aree in 3 differenti classi tramite la funzione "unsuperClass()"
 #Utilizzo la banda del rosso che sembra garantire il miglior contrasto tra le varie zone
-MSH1979<- unsuperClass(H1979$STHE79.2, nClasses=3) #controllare Hist
+MSH1979<- unsuperClass(H1979$STHE79.2, nClasses=3)
 MSH1980<- unsuperClass(H1980$STHE80.2, nClasses=3)
 MSH1982<- unsuperClass(H1982$STHE82.2, nClasses=3)
 MSH1986<- unsuperClass(H1986$STHE86.1, nClasses=3)
