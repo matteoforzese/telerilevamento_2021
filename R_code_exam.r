@@ -54,17 +54,28 @@ plot(MSH2015$map, col=BWG)
 freq(MSH2015$map) #Altro 57983 Vulcanica 54346 Alberi 233271
 AreaTot<-345600
 
-P79<-freq(MSH1979$map)/AreaTot #Altro 0,28 Vulcanica 0,06 Alberi 0,66
-P80<-freq(MSH1980$map)/AreaTot #Altro 0,32 Vulcanica 0,28 Alberi 0,40
-P82<-freq(MSH1982$map)/AreaTot #Altro 0,31 Vulcanica 0,24 Alberi 0,45
-P86<-freq(MSH1986$map)/AreaTot #Altro 0,33 Vulcanica 0,29 Alberi 0,38
-P90<-freq(MSH1990$map)/AreaTot #Altro 0,29 Vulcanica 0,30 Alberi 0,41
-P93<-freq(MSH1993$map)/AreaTot #Altro 0,29 Vulcanica 0,27 Alberi 0,44
-P98<-freq(MSH1998$map)/AreaTot #Altro 0,28 Vulcanica 0,27 Alberi 0,45
-P02<-freq(MSH2002$map)/AreaTot #Altro 0,24 Vulcanica 0,22 Alberi 0,54
-P06<-freq(MSH2006$map)/AreaTot #Altro 0,22 Vulcanica 0,20 Alberi 0,58
-P10<-freq(MSH2010$map)/AreaTot #Altro 0,21 Vulcanica 0,19 Alberi 0,60
-P15<-freq(MSH2015$map)/AreaTot #Altro 0,17 Vulcanica 0,16 Alberi 0,67
+P79<-freq(MSH1979$map)/AreaTot 
+#Altro 0,28 Vulcanica 0,06 Alberi 0,66
+P80<-freq(MSH1980$map)/AreaTot 
+#Altro 0,32 Vulcanica 0,28 Alberi 0,40
+P82<-freq(MSH1982$map)/AreaTot 
+#Altro 0,31 Vulcanica 0,24 Alberi 0,45
+P86<-freq(MSH1986$map)/AreaTot 
+#Altro 0,33 Vulcanica 0,29 Alberi 0,38
+P90<-freq(MSH1990$map)/AreaTot 
+#Altro 0,29 Vulcanica 0,30 Alberi 0,41
+P93<-freq(MSH1993$map)/AreaTot 
+#Altro 0,29 Vulcanica 0,27 Alberi 0,44
+P98<-freq(MSH1998$map)/AreaTot 
+#Altro 0,28 Vulcanica 0,27 Alberi 0,45
+P02<-freq(MSH2002$map)/AreaTot 
+#Altro 0,24 Vulcanica 0,22 Alberi 0,54
+P06<-freq(MSH2006$map)/AreaTot 
+#Altro 0,22 Vulcanica 0,20 Alberi 0,58
+P10<-freq(MSH2010$map)/AreaTot 
+#Altro 0,21 Vulcanica 0,19 Alberi 0,60
+P15<-freq(MSH2015$map)/AreaTot 
+#Altro 0,17 Vulcanica 0,16 Alberi 0,67
 
 ALTRO=c(0.28, 0.32, 0.31, 0.33, 0.29, 0.29, 0.28, 0.24, 0.22, 0.21, 0.17) 
 VULCANICA=c(0.06, 0.28, 0.24, 0.29, 0.30, 0.27, 0.27, 0.22, 0.20, 0.19, 0.16)
@@ -72,10 +83,13 @@ ALBERI=c(0.66, 0.40, 0.45, 0.38, 0.41, 0.44, 0.45, 0.54, 0.58, 0.60, 0.67)
 ANNO=c(1979, 1980, 1982, 1986, 1990, 1993, 1998, 2002, 2006, 2010, 2015) 
 SAINTHELEN= data.frame (ANNO, ALTRO, VULCANICA, ALBERI)
 
-ggplot(SAINTHELEN, aes(x=ANNO)) + 
-geom_line(aes(y=ALBERI), color="Green",show.legend=TRUE,na.rm=TRUE) +
-geom_line(aes(y=ALTRO), color="Grey", show.legend=TRUE,na.rm=TRUE) +
-geom_line(aes(y=VULCANICA), color="Black", show.legend=TRUE, na.rm=TRUE)
+ggplot(SAINTHELEN, aes(x=ANNO)) +
+geom_line(aes(y=ALBERI, color="Green"),show.legend=TRUE,na.rm=TRUE, size=5) +
+geom_line(aes(y=ALTRO, color="Grey"), show.legend=TRUE,na.rm=TRUE, size=5) +
+geom_line(aes(y=VULCANICA, color="Black"), show.legend=TRUE, na.rm=TRUE, size=5) + theme_bw(base_size=25) + 
+ggtitle("Variazione vegetazione nel tempo") + xlab("ANNO") + ylab("ALBERI, VULCANICA, ALTRO") +
+scale_color_manual(name = "LEGENDA", values = c("ALBERI" = "green", "ROCCIA VULCANICA" = "black", "VEGETAZIONE BASSA" = "white"))
+
 
 bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) +
 geom_bar(width = 1, stat = "identity") 
@@ -84,8 +98,16 @@ bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
 geom_bar(width = 1, stat = "identity") 
 bpv
 bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
-geom_bar(width = 1, stat = "identity")
+geom_bar(width = 1, stat = "identity") 
 bpo
+
+bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) + 
+geom_bar(width = 1, stat = "identity") +
+ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
+geom_bar(width = 1, stat = "identity") + 
+ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
+geom_bar(width = 1, stat = "identity")
+
 
 ggplot(SAINTHELEN, aes(x = ANNO)) +  
   geom_bar((y = ALBERI/sum(100)))
