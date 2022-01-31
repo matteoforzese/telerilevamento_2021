@@ -134,6 +134,12 @@ bpo
 
 
 
+
+
+
+
+
+
 bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) + 
 geom_bar(width = 1, stat = "identity") +
 ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
@@ -141,31 +147,8 @@ geom_bar(width = 1, stat = "identity") +
 ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
 geom_bar(width = 1, stat = "identity")
 
-
-
-
-
-
-
-
-
 ggplot(SAINTHELEN, aes(x = ANNO)) +  
   geom_bar((y = ALBERI/sum(100)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 BWG<-colorRampPalette(c("black","white","green"))(100)
 WGB<-colorRampPalette(c("white","green","black"))(100)
@@ -196,11 +179,6 @@ plot(MSH1986$map, col=BWG)
 plotRGB(H1982, r=2, g=2, b=1)
 
 
-H1979<-reclassify(H1979, cbind(253:255, NA))
-H1980<-reclassify(H1980, cbind(253:255, NA))
-H1982<-reclassify(H1982, cbind(253:255, NA))
-H1986<-reclassify(H1986, cbind(253:255, NA))
-
 par(mfrow=c(3,4), no.readonly = FALSE)
 MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=2,stretch="lin")
 plot(MSH1979$map, col=BWG)
@@ -226,12 +204,6 @@ MSH2015 <- unsuperClass(H2015$STHE15.1, nClasses=2,stretch="lin")
 plot(MSH2015$map, col=BWG)
 
 
-MSH1979 <- unsuperClass(H1979$STHE79.3, nClasses=2,stretch="lin")
-MSH1980 <- unsuperClass(H1980$STHE80.3, nClasses=2,stretch="lin")
-MSH1982 <- unsuperClass(H1982$STHE82.3, nClasses=2,stretch="lin")
-AMSH1979 <- unsuperClass(H1979$STHE79.3, nClasses=2,stretch="lin")
-AMSH1980 <- unsuperClass(H1980$STHE80.3, nClasses=2,stretch="lin")
-AMSH1982 <- unsuperClass(H1982$STHE82.3, nClasses=2,stretch="lin")
 plot(MSH1979$map)
 plot(MSH1980$map)
 plot(MSH1982$map)
