@@ -108,12 +108,13 @@ ANNO=c(1979, 1980, 1982, 1986, 1990, 1993, 1998, 2002, 2006, 2010, 2015)
 SAINTHELEN= data.frame (ANNO, ALTRO, VULCANICA, ALBERI)
 
 #Creo un grafico lineare tramite la funzione "geom_line()"
-ggplot(SAINTHELEN, aes(x=ANNO)) +
-geom_line(aes(y=ALBERI, color="Green"), color="Green",show.legend=TRUE,na.rm=TRUE, size=5) +
-geom_line(aes(y=ALTRO, color="Grey"), color="Grey", show.legend=TRUE,na.rm=TRUE, size=5) +
-geom_line(aes(y=VULCANICA, color="Black"), color="Black", show.legend=TRUE, na.rm=TRUE, size=5) + theme_bw(base_size=25) + 
-ggtitle("Variazione vegetazione nel tempo") + xlab("ANNO") + ylab("ALBERI, VULCANICA, ALTRO") +
-scale_color_manual(name = "LEGENDA", values = c("ALBERI" = "green", "ROCCIA VULCANICA" = "black", "VEGETAZIONE BASSA" = "white"))
+graph<-ggplot(SAINTHELEN, aes(x=ANNO)) +
+geom_line(aes(y=ALBERI, color="ALBERI"), size=5) +
+geom_line(aes(y=ALTRO, color="BASSA VEGETAZIONE"), size=5) +
+geom_line(aes(y=VULCANICA, color="ROCCIA VULCANICA"), size=5) + theme_bw(base_size=25) + 
+ggtitle("Variazione vegetazione nel tempo") + xlab("ANNO") + ylab("ALBERI, ROCCIA VULCANICA, ALTRO") +
+scale_color_manual(name = "LEGENDA", values = c("ALBERI" = "green", "ROCCIA VULCANICA" = "black", "BASSA VEGETAZIONE" = "grey"))
+graph
 
 #Creo tre grafici a barre tramite la funzione "geom_bar()"
 bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) +
@@ -125,6 +126,10 @@ bpv
 bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
 geom_bar(width = 1, stat = "identity") 
 bpo
+
+
+
+
 
 
 
