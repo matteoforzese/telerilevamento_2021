@@ -118,111 +118,22 @@ graph
 
 #Creo tre grafici a barre tramite la funzione "geom_bar()"
 bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) +
-geom_bar(width = 1, stat = "identity") 
-bpa
-bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
-geom_bar(width = 1, stat = "identity") 
-bpv
-bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
-geom_bar(width = 1, stat = "identity") 
-bpo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) + 
 geom_bar(width = 1, stat = "identity") +
-ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
+theme_bw(base_size=25) +
+ggtitle("Variazione copertura arborea nel corso del tempo") +
+xlab("ANNO") + ylab("ALBERI")
+bpa
+
+bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
 geom_bar(width = 1, stat = "identity") + 
-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill=ALTRO)) +
-geom_bar(width = 1, stat = "identity")
+theme_bw(base_size=25) +
+ggtitle("Variazione roccia vulcanica nel corso del tempo") +
+xlab("ANNO") + ylab("ROCCIA VULCANICA")
+bpv
 
-ggplot(SAINTHELEN, aes(x = ANNO)) +  
-  geom_bar((y = ALBERI/sum(100)))
-
-BWG<-colorRampPalette(c("black","white","green"))(100)
-WGB<-colorRampPalette(c("white","green","black"))(100)
-GBW<-colorRampPalette(c("green","black","white"))(100)
-GWB<-colorRampPalette(c("green","white","black"))(100)
-BGW<-colorRampPalette(c("black","green","white"))(100)
-WBG<-colorRampPalette(c("white","black","green"))(100)
-
-
-MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=3,stretch="lin")
-MSH1980 <- unsuperClass(H1980$STHE80.2, nClasses=3,stretch="lin")
-MSH1982 <- unsuperClass(H1982$STHE82.2, nClasses=3,stretch="lin")
-MSH1986 <- unsuperClass(H1986$STHE86.1, nClasses=3,stretch="lin")
-MSH1990 <- unsuperClass(H1990$STHE90.1, nClasses=3,stretch="lin")
-MSH1993 <- unsuperClass(H1993$STHE93.1, nClasses=3,stretch="lin")
-MSH1998 <- unsuperClass(H1998$STHE98.1, nClasses=3,stretch="lin")
-MSH2002 <- unsuperClass(H2002$STHE02.1, nClasses=3,stretch="lin")
-MSH2006 <- unsuperClass(H2006$STHE06.1, nClasses=3,stretch="lin")
-MSH2010 <- unsuperClass(H2010$STHE10.1, nClasses=3,stretch="lin")
-MSH2015 <- unsuperClass(H2015$STHE15.1, nClasses=3,stretch="lin")
-BWG<-colorRampPalette(c("black","white","green"))(100)
-GWB<-colorRampPalette(c("green","white","black"))(100)
-par(mfrow=c(3,1), no.readonly = FALSE)
-
-plot(MSH1979$map, col=BWG)
-plot(MSH1982$map, col=BWG)
-plot(MSH1986$map, col=BWG) 
-plotRGB(H1982, r=2, g=2, b=1)
-
-
-par(mfrow=c(3,4), no.readonly = FALSE)
-MSH1979 <- unsuperClass(H1979$STHE79.2, nClasses=2,stretch="lin")
-plot(MSH1979$map, col=BWG)
-MSH1980 <- unsuperClass(H1980$STHE80.2, nClasses=2,stretch="lin")
-plot(MSH1980$map, col=BWG)
-MSH1982 <- unsuperClass(H1982$STHE82.2, nClasses=2,stretch="lin")
-plot(MSH1982$map, col=BWG)
-MSH1986 <- unsuperClass(H1986$STHE86.1, nClasses=2,stretch="lin")
-plot(MSH1986$map, col=BWG)
-MSH1990 <- unsuperClass(H1990$STHE90.1, nClasses=2,stretch="lin")
-plot(MSH1990$map, col=BWG)
-MSH1993 <- unsuperClass(H1993$STHE93.1, nClasses=2,stretch="lin")
-plot(MSH1993$map, col=BWG)
-MSH1998 <- unsuperClass(H1998$STHE98.1, nClasses=2,stretch="lin")
-plot(MSH1998$map, col=BWG)
-MSH2002 <- unsuperClass(H2002$STHE02.1, nClasses=2,stretch="lin")
-plot(MSH2002$map, col=BWG)
-MSH2006 <- unsuperClass(H2006$STHE06.1, nClasses=2,stretch="lin")
-plot(MSH2006$map, col=BWG)
-MSH2010 <- unsuperClass(H2010$STHE10.1, nClasses=2,stretch="lin")
-plot(MSH2010$map, col=BWG)
-MSH2015 <- unsuperClass(H2015$STHE15.1, nClasses=2,stretch="lin")
-plot(MSH2015$map, col=BWG)
-
-
-plot(MSH1979$map)
-plot(MSH1980$map)
-plot(MSH1982$map)
-plot(AMSH1979$map)
-plot(AMSH1980$map)
-plot(AMSH1982$map)
-
-par(mfrow=c(2,3))
-plot(H1980$STHE80.1)
-plot(H1980$STHE80.2)
-plot(H1980$STHE80.3)
-plot(H1986$STHE86.1)
-plot(H1986$STHE86.2)
-plot(H1986$STHE86.3)
-
-par(mfrow=c(3,2))
-plot(H1979$STHE79.2)
-plot(MSH1979$map)
-plot(H1980$STHE80.2)
-plot(MSH1980$map)
-plot(H1986$STHE86.1)
-plot(MSH1986$map)
+bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill= ALTRO)) +
+geom_bar(width = 1, stat = "identity") + 
+theme_bw(base_size=25) +
+ggtitle("Variazione bassa vegetazione nel corso del tempo") +
+xlab("ANNO") + ylab("BASSA VEGETAZIONE")
+bpo
