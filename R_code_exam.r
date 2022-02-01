@@ -20,6 +20,7 @@ H2015<-brick("STHE15.jpg")
 #Plotto tramite la funzione "plotRGB" le immagini con colori naturali, in questo caso con la banda del rosso è la prima, quella del verde la seconda e quella del blu la terza
 #Le prime tre immagini non hanno la banda del blu perchè sono state raccolte dal satellite Landsat3 che ne è privo
 #Uso stretch "hist" per acuire il contrasto di colore
+par(mfrow=c(3,4))
 plotRGB(H1979, r=2, g=3, stretch="hist")
 plotRGB(H1980, r=2, g=3, stretch="hist")
 plotRGB(H1982, r=2, g=3, stretch="hist")
