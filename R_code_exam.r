@@ -119,21 +119,21 @@ scale_color_manual(name = "LEGENDA", values = c("ALBERI" = "green", "ROCCIA VULC
 graph
 
 #Creo tre grafici a barre tramite la funzione "geom_bar()"
-bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI, fill=ALBERI)) +
+bpa<- ggplot(SAINTHELEN, aes(x=ANNO, y=ALBERI)) +
 geom_bar(width = 1, stat = "identity") +
 theme_bw(base_size=25) +
 ggtitle("Variazione copertura arborea nel corso del tempo") +
 xlab("ANNO") + ylab("ALBERI")
 bpa
 
-bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA, fill=VULCANICA)) +
+bpv<- ggplot(SAINTHELEN, aes(x=ANNO, y=VULCANICA)) +
 geom_bar(width = 1, stat = "identity") + 
 theme_bw(base_size=25) +
 ggtitle("Variazione roccia vulcanica nel corso del tempo") +
 xlab("ANNO") + ylab("ROCCIA VULCANICA")
 bpv
 
-bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO, fill= ALTRO)) +
+bpo<-ggplot(SAINTHELEN, aes(x=ANNO, y=ALTRO)) +
 geom_bar(width = 1, stat = "identity") + 
 theme_bw(base_size=25) +
 ggtitle("Variazione bassa vegetazione nel corso del tempo") +
