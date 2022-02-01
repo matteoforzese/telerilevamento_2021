@@ -137,3 +137,5 @@ theme_bw(base_size=25) +
 ggtitle("Variazione bassa vegetazione nel corso del tempo") +
 xlab("ANNO") + ylab("BASSA VEGETAZIONE")
 bpo
+
+grid.arrange(bpa, bpo, nrow=2)
