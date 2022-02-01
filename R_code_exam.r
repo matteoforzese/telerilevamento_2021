@@ -138,4 +138,4 @@ ggtitle("Variazione bassa vegetazione nel corso del tempo") +
 xlab("ANNO") + ylab("BASSA VEGETAZIONE")
 bpo
 
-grid.arrange(bpa, bpo, nrow=2)
+grid.arrange(bpa, bpv, nrow=2)
