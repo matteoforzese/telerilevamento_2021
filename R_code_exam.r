@@ -32,6 +32,7 @@ plotRGB(H2002, r=1, g=2, b=3, stretch="hist")
 plotRGB(H2006, r=1, g=2, b=3, stretch="hist")
 plotRGB(H2010, r=1, g=2, b=3, stretch="hist")
 plotRGB(H2015, r=1, g=2, b=3, stretch="hist")
+dev.off()
 
 #Classifico le aree in 3 differenti classi tramite la funzione "unsuperClass()"
 #Utilizzo la banda del rosso che sembra garantire il miglior contrasto tra le varie zone
